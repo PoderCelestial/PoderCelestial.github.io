@@ -225,6 +225,42 @@ function updateBodyScroll() {
   }
 }
 
-// Ejecutamos cada vez que cambie el estado de los checkboxes
-menuToggle.addEventListener("change", updateBodyScroll);
-pcMenuToggle.addEventListener("change", updateBodyScroll);
+// ==================== BLOQUEO REAL DEL SCROLL (MÓVIL + PC) ====================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const pcMenuToggle = document.getElementById("pc-menu-toggle");
+
+  let scrollPosition = 0;
+
+  function lockScroll() {
+    scrollPosition = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = "100%";
+  }
+
+  function unlockScroll() {
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
+    window.scrollTo(0, scrollPosition);
+  }
+
+  function updateScrollState() {
+    const isOpen =
+      (menuToggle && menuToggle.checked) ||
+      (pcMenuToggle && pcMenuToggle.checked);
+
+    if (isOpen) {
+      lockScroll();
+    } else {
+      unlockScroll();
+    }
+  }
+
+  if (menuToggle) menuToggle.addEventListener("change", updateScrollState);
+  if (pcMenuToggle) pcMenuToggle.addEventListener("change", updateScrollState);
+
+  window.addEventListener("resize", updateScrollState);
+});

@@ -1108,3 +1108,33 @@ html, body {
   width: 100%;
   overflow-x: hidden;
 }
+
+/* ================= BLOQUEAR SCROLL DE LA PÁGINA ================= */
+
+/* Menú móvil abierto */
+#menu-toggle:checked ~ .sidebar,
+#menu-toggle:checked ~ .overlay {
+  pointer-events: auto;
+}
+
+#menu-toggle:checked ~ .todo,
+#menu-toggle:checked ~ .contenido-fin {
+  pointer-events: none;
+}
+
+/* Bloquear scroll del body (truco CSS puro) */
+#menu-toggle:checked ~ .todo {
+  position: fixed;
+  width: 100%;
+}
+
+/* Menú PC abierto */
+#pc-menu-toggle:checked ~ .todo {
+  position: fixed;
+  width: 100%;
+}
+
+/* BLOQUEO TOTAL DEL SCROLL */
+body.no-scroll {
+  overflow: hidden;
+}

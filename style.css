@@ -1,0 +1,1093 @@
+/* ================= GLOBAL ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  padding-top: 70px;
+}
+
+/*==================Scroll suave====================*/
+html {
+  scroll-behavior: smooth;
+}
+
+/* ================= HEADER ================= */
+.topbar {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background: linear-gradient(180deg, #00ddff,#003cff);
+  color: white;
+  padding: 0 25px;
+  position: fixed;     /* ya estaba fijo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;      /* << aumentar z-index al máximo */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  gap: 15px;
+
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.logo-box img {
+  height: 40px;
+}
+
+.logo-box span {
+  font-size: 1.4rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.menu-desktop {
+  display: flex;
+  gap: 25px;
+  margin-left: auto;
+}
+
+.menu-desktop a {
+  color: white;
+  text-decoration: none;
+  position: relative;
+}
+
+.menu-desktop a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #00d4ff;
+  transition: width 0.3s;
+}
+
+.menu-desktop a:hover::after {
+  width: 100%;
+}
+
+/* ================= HAMBURGUESA ================= */
+#menu-toggle {
+  display: none;
+}
+
+
+#menu-toggle:checked ~ .topbar .menu-btn::before {
+  content: "✕";
+  transform: rotate(180deg) scale(1.1);
+}
+
+/* ================= OVERLAY ================= */
+.overlay {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 70px);
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 9999; /* debajo del topbar pero encima del contenido */
+}
+
+/* ================= MENÚ MÓVIL ================= */
+
+.sidebar-title {
+  font-size: 1.7rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.sidebar-title::after {
+  content: "";
+  width: 50px;
+  height: 3px;
+  background: #00d4ff;
+  display: block;
+  margin-top: 8px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.sidebar a:hover {
+  background: rgba(0, 242, 255, 0.45);
+}
+
+#menu-toggle:checked ~ .sidebar {
+  transform: translateX(0);
+}
+
+/* ================= CONTENIDO ================= */
+.todo {
+  padding: 30px;
+  background-image: url("img/fondo-pc.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  color: white;
+}
+
+.todo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 0;
+}
+
+.todo > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Contenedor de los textos */
+.contenido-1 {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.con-t1, .con-t2 {
+  background-color: rgba(0, 0, 0, 0.316);
+  color: white;
+  display: inline-block;
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 10px 30px 0 0;
+}
+
+.con-t2 {
+  padding: 8px 16px;
+  font-size: 120%;
+  text-align: right;
+  border-radius: 10px 0px 10px 10px;
+}
+
+/*------contenido 2-------*/
+.contenido-2 {
+  background: rgba(0,0,0,0.1);  /* opcional, para que se vea sobre el fondo */
+  padding: 50px 20px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.323);
+}
+
+.contenido-2 h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  margin-top: -20px;
+}
+
+.contenido-2 img{
+  width: 450px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.295);
+}
+
+
+
+
+
+/*============== Horarios ===============*/
+.horarios {
+  display: flex;
+  margin-top: 50px;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 300px;
+}
+
+.horario {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(0, 0, 255, 0.777);
+  border-radius: 40px;
+  color: white;
+  border: solid #0101b7;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.6);
+}
+
+.dia {
+  font-size: 2rem;
+  padding: 20px;
+}
+
+.hora-circulo {
+  width: 90px;
+  height: 90px;
+  background: #0101b7;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ubicación */
+.uvicacion {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border-radius: 10px;
+}
+
+.uvicacion p {
+  background-color: rgba(0, 0, 0, 0.316);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* ===== RADIO PRO DEFINITIVO ===== */
+#radio-widget {
+  position: fixed;
+  bottom: 18px;
+  left: 18px;
+  z-index: 9999;
+}
+
+
+/* BOTÓN MÚSICA */
+#radio-open {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10000;
+  padding: 10px 15px;
+  border-radius: 50px ;
+  border: none;
+  background: linear-gradient(135deg,#00ddff,#003cff);
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+
+#radio-panel {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 300px;
+  background: linear-gradient(135deg,#00ddff,#003cff);
+  padding: 15px;
+  border-radius: 20px;
+  display: none;
+  box-shadow: 0 15px 30px rgba(0,0,0,.4);
+  color: white;
+  z-index: 9999;
+  transition: all 0.4s ease;
+}
+
+#radio-panel.active { display: block; }
+
+.radio-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.radio-top-right {
+  display: flex;
+  gap: 10px;
+}
+
+/*================= fondo plomo interfaz ==============*/
+
+.radio-fondo-n{
+  background-color: rgba(0, 0, 0, 0.263);
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+
+/* ================= RADIO MENU FIX ================= */
+
+#radio-menu {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 285px;
+  max-height: 260px;
+  background: linear-gradient(135deg,#00ddff,#003cff);
+  border-radius: 18px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: solid #00ddff;
+
+  /* SOLO SCROLL VERTICAL */
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* SIN ANIMACIONES */
+  transition: none;
+
+  display: none;
+}
+
+#radio-menu.active {
+  display: block;
+}
+
+/* Lista de canciones */
+#radio-song-list {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.263);
+  border-radius: 10px;
+
+  /* SCROLL SOLO ABAJO */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Botones canciones SIN animación */
+.radio-song {
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #ff4d6d, #ff8c42);
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+
+  /* QUITAR TODO */
+  transition: none;
+}
+
+/* SIN hover animado */
+.radio-song:hover {
+  background: linear-gradient(135deg, #ff4d6d, #ff8c42);
+  box-shadow: none;
+  transform: none;
+}
+
+
+
+.radio-title {
+  text-align: center;
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.radio-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.radio-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.radio-controls button {
+  border: none;
+  background: rgb(0, 21, 255);
+  color: rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+/* MENU CANCIONES (DESDE ARRIBA) */
+
+
+
+
+/* Contenedor top del menú */
+.radio-menu-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Botón cerrar menú */
+
+
+/* Buscador al lado de la X */
+#radio-search {
+  flex-grow: 1;           /* ocupa el resto del espacio */
+  padding: 7px 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+/* Lista de canciones scrollable */
+#radio-song-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 180px;       /* altura máxima visible */
+  overflow-y: auto;        /* scroll vertical */
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* Botones de canciones */
+.radio-song {
+  display: block;
+  margin: 0px 6px;
+  margin-top: 7px;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #ff4d6d, #ff8c42);
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.radio-song:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+
+
+
+.radio-top button {
+  background-color: #0044ff;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+#radio-close{
+  background-color: red;      /* color del botón */
+  color: white;               /* color de la X */
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+#radio-progress {
+  width: calc(100% - 20px); /* ancho completo menos margen */
+  margin: 10px;              /* margen superior e inferior y lateral */
+  height: 6px;               /* altura del slider */
+  border-radius: 5px;
+  background: rgba(255,255,255,0.3);
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Estilo de la barra interna */
+#radio-progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #00d4ff;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+#radio-progress::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #00d4ff;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+
+
+
+
+/*====== NADA ======*/
+.nada{
+  padding: 3%;
+  color: #fff;
+}
+
+/* ================= IMÁGENES ================= */
+.imagenes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.imagenes-row {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.imagenes-row img {
+  width: 450px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.295);
+}
+
+.imagenes h3{
+  font-size: 150%;
+}
+
+/* ================= CONTENIDO FINAL ================= */
+.contenido-fin {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+  padding: 0;
+}
+
+.txt-fin {
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 1.2rem;
+  box-sizing: border-box;
+}
+
+.contacto {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #111;
+  padding: 40px 10px;
+  box-sizing: border-box;
+  gap: 20px;
+}
+
+.contacto .contactanos {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.contacto .links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.contacto a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.contacto a:hover {
+  color: #25D366;
+}
+
+.contacto img {
+  width: 50px;
+  height: 50px;
+}
+
+/* ================= DESTELLO ================= */
+.destello {
+  position: relative;
+  z-index: 1000;
+  animation: flashBackground 1s ease-in-out;
+}
+
+@keyframes flashBackground {
+  0%, 100% {
+    box-shadow: inset 0 0 0 rgba(255,255,255,0), inset 0 0 0 rgba(255,255,0,0);
+  }
+  30%, 60% {
+    box-shadow: inset 0 0 40px rgba(242,255,0,0.6), inset 0 0 20px rgba(255,255,0,0.9);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .menu-desktop { display: none; }
+  .menu-btn { display: block; }
+  .logo-box { position: absolute; left: 50%; transform: translateX(-50%); }
+  .todo { background-size: 180%; }
+  .contenido-1{ margin-top: 20px; }
+  .contenido-1 h2 { font-size: 130%; }
+  .contenido-1 h3 { font-size: 120%; }
+  .horarios { max-width: 245px; gap: 10px; }
+  .dia { font-size: 1.3rem; padding: 15px; }
+  .hora-circulo { width: 70px; height: 70px; border-radius: 20px; }
+  .uvicacion { margin-top: 20px; font-size: 1rem; }
+
+  /*------contenido 2-------*/
+  .contenido-2 {
+    background: rgba(0,0,0,0.1);  /* opcional, para que se vea sobre el fondo */
+    padding: 100px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin: 5%;
+  }
+
+  .contenido-2 h3 {
+    margin-top: -15%;
+    font-size: 1.5rem;
+  }
+
+  .contenido-2 img{
+    margin-left: -15%;
+    margin-bottom: -15%;
+  }
+}
+
+
+
+
+
+@media (min-width: 769px) {
+  /* SOLO ocultar el menú MÓVIL */
+  .sidebar:not(.pc-sidebar),
+  .overlay:not(.pc-overlay) {
+    display: none;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .imagenes { flex-direction: column; align-items: center; }
+  .imagenes-row img { width: 90%; }
+}
+
+/* ================= SIN ANIMACIONES EN BOTONES ================= */
+#radio-panel button,
+#radio-open,
+.radio-controls button,
+.radio-top button {
+  transition: none !important;
+}
+
+
+#radio-menu * {
+  max-width: 100%;
+}
+
+/* === BOTÓN X DEL MENÚ DE RADIO (SOLO ESTE) === */
+#radio-menu-close {
+  background-color: red;      /* color del botón */
+  color: white;               /* color de la X */
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+
+  /* SIN AFECTAR A OTROS BOTONES */
+  transition: none;
+}
+
+/* Opcional: hover simple sin animación */
+#radio-menu-close:hover {
+  background-color: darkred;
+}
+
+/* === OCULTAR SCROLLBAR DEL MENÚ DE RADIO === */
+#radio-menu {
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE / Edge viejo */
+}
+
+#radio-menu::-webkit-scrollbar {
+  display: none;              /* Chrome / Edge / Safari */
+}
+
+#radio-song-list {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#radio-song-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* ================= TOGGLES OCULTOS ================= */
+#menu-toggle,
+#pc-menu-toggle {
+  display: none;
+}
+
+/* ================= HEADER ================= */
+
+
+
+
+
+
+/* ================= MENÚ DESKTOP ================= */
+.menu-desktop {
+  display: flex;
+  gap: 20px;
+}
+
+.menu-desktop a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ================= SIDEBAR BASE ================= */
+
+
+/* ================= SIDEBAR PC DERECHA ================= */
+.pc-sidebar {
+  right: 0;
+  left: auto;
+}
+
+/* ================= ACTIVACIONES ================= */
+#menu-toggle:checked ~ .sidebar {
+  transform: translateX(0);
+}
+
+#menu-toggle:checked ~ .overlay {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#pc-menu-toggle:checked ~ .pc-sidebar {
+  transform: translateX(0);
+}
+
+#pc-menu-toggle:checked ~ .pc-overlay {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .menu-desktop {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .pc-menu-btn {
+    display: none;
+  }
+}
+
+@media (min-width: 901px) {
+  .menu-btn {
+    display: none;
+  }
+
+  .pc-menu-btn {
+    display: block;
+  }
+}
+
+/* ===== ACTIVAR MENÚ HAMBURGUESA PC (SIN TOCAR MÓVIL) ===== */
+
+.pc-menu-btn {
+  display: block;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  margin-left: 15px;
+}
+
+/* Sidebar PC usa el MISMO estilo */
+.pc-sidebar {
+  transform: translateX(100%);
+}
+
+.pc-sidebar p{
+  color: #fff;
+  font-size: 130%;
+}
+
+#pc-menu-toggle:checked ~ .pc-sidebar {
+  transform: translateX(0);
+}
+
+/* Overlay PC idéntico al tuyo */
+.pc-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#pc-menu-toggle:checked ~ .pc-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* OCULTAR MENÚ EXTRA (PC) EN TELÉFONO */
+@media (max-width: 768px) {
+  .pc-sidebar,
+  .pc-menu-btn,
+  .pc-overlay {
+    display: none !important;
+  }
+}
+
+/* ================= ANIMACIÓN HAMBURGUESA → X (MÓVIL) ================= */
+/* ================= BOTÓN HAMBURGUESA (ARREGLADO) ================= */
+
+.menu-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+/* ICONO */
+.menu-btn::before {
+  content: "☰";
+  display: block;
+  line-height: 1;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* ===== CAMBIO SUAVE A X ===== */
+#menu-toggle:checked ~ .topbar .menu-btn::before {
+  content: "✕";
+  opacity: 0;
+  transform: scale(0.5);
+  animation: iconFadeIn 0.25s ease forwards;
+}
+
+/* ===== ANIMACIÓN REAL ===== */
+@keyframes iconFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ================= BOTÓN HAMBURGUESA PC (ARREGLADO) ================= */
+
+.pc-menu-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+/* ICONO PC */
+.pc-menu-btn::before {
+  content: "☰";
+  display: block;
+  line-height: 1;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* ===== CAMBIO SUAVE A X (PC) ===== */
+#pc-menu-toggle:checked ~ .topbar .pc-menu-btn::before {
+  content: "✕";
+  opacity: 0;
+  transform: scale(0.5);
+  animation: pcIconFadeIn 0.25s ease forwards;
+}
+
+/* ===== ANIMACIÓN PC ===== */
+@keyframes pcIconFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ================= OCULTAR SOLO HAMBURGUESA MÓVIL EN PC ================= */
+@media (min-width: 769px) {
+  header .menu-btn:not(.pc-menu-btn) {
+    display: none !important;
+  }
+}
+
+/* ================= SIDEBAR ÚNICO DESDE LA DERECHA ================= */
+
+.sidebar {
+  position: fixed;
+  top: 70px;
+  right: 0;
+  left: auto;
+  width: 70%;
+  max-width: 310px;
+  height: calc(100% - 70px);
+  background: linear-gradient(180deg, #003cff, #0000be);
+  padding: 25px;
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  z-index: 10001;
+}
+
+.sidebar .nada{
+  color: rgba(255, 255, 255, 0);
+  background-color: #00ddff;
+  width: 250px;
+  height: 1px;
+  padding: 1.5px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+/* abrir menú móvil */
+#menu-toggle:checked ~ .sidebar:not(.pc-sidebar) {
+  transform: translateX(0);
+}
+
+/* abrir menú PC */
+#pc-menu-toggle:checked ~ .pc-sidebar {
+  transform: translateX(0);
+}
+
+/* ================= OVERLAY ================= */
+
+#menu-toggle:checked ~ .overlay:not(.pc-overlay),
+#pc-menu-toggle:checked ~ .pc-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* === FIX DEFINITIVO POSICIÓN HAMBURGUESA === */
+.topbar {
+  display: flex;
+  align-items: center;
+}
+
+.menu-desktop {
+  margin-left: auto;
+}
+
+.menu-btn,
+.pc-menu-btn {
+  margin-left: 15px;
+  position: relative;
+  z-index: 10;
+}
+
+.menu-btn {
+  line-height: 1;
+}
+
+.menu-btn span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  /* Mover hamburguesa móvil a la derecha */
+  .menu-btn {
+    position: absolute;
+    right: 20px; /* distancia desde la derecha */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Mantener logo centrado */
+  .logo-box {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* ===== SIDEBAR MÓVIL Y PC SCROLLABLE SIN BARRA ===== */
+.sidebar,
+.pc-sidebar {
+  overflow-y: auto;          /* permite scroll vertical */
+  overflow-x: hidden;        /* evita scroll horizontal */
+
+  /* Ocultar scrollbar en todos los navegadores */
+  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;  /* IE y Edge antiguos */
+}
+
+.sidebar::-webkit-scrollbar,
+.pc-sidebar::-webkit-scrollbar {
+  display: none;             /* Chrome, Edge, Safari */
+}

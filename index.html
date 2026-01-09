@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poder Celestial</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= TOGGLES ================= -->
+<input type="checkbox" id="menu-toggle">
+<input type="checkbox" id="pc-menu-toggle">
+
+<!-- ================= HEADER ================= -->
+<header class="topbar">
+
+  <!-- HAMBURGUESA MÓVIL -->
+  <label for="menu-toggle" class="menu-btn"></label>
+
+  <div class="logo-box">
+    <img src="img/logo-ministerio.png" alt="Logo Poder Celestial">
+    <span>Poder Celestial</span>
+  </div>
+
+  <!-- MENÚ NORMAL PC -->
+  <nav class="menu-desktop">
+    <a href="#inicio">Inicio</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#servicios">Citas</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <!-- HAMBURGUESA PC -->
+  <label for="pc-menu-toggle" class="menu-btn pc-menu-btn">
+  </label>
+
+</header>
+
+<!-- ================= SIDEBARS ================= -->
+
+<!-- SIDEBAR MÓVIL -->
+<nav class="sidebar">
+  <div class="sidebar-title">MENÚ</div>
+  <a href="#inicio">Inicio</a>
+  <a href="#nosotros">Nosotros</a>
+  <a href="#servicios">Citas</a>
+  <a href="#contacto">Contacto</a>
+  <div class="nada">.</div>
+  <div class="sidebar-title">MENÚ EXTRA</div>
+</nav>
+
+<!-- SIDEBAR PC (DERECHA) -->
+<nav class="sidebar pc-sidebar">
+  <div class="sidebar-title">MENÚ EXTRA</div>
+      <p class="prox">Proximamente</p>
+  <!--proximamente
+  <a href="#">Opción extra 1</a>
+  <a href="#">Opción extra 2</a>
+  <a href="#">Opción extra 3</a>
+  -->
+</nav>
+
+<!-- ================= OVERLAYS ================= -->
+<label for="menu-toggle" class="overlay"></label>
+<label for="pc-menu-toggle" class="overlay pc-overlay"></label>
+
+<!-- ================= CONTENIDO ================= -->
+<div id="inicio" class="todo">
+  <div class="contenido-1">
+    <h3 class="con-t1">Ministerio Evangelístico</h3>
+    <h2 class="con-t2">Poder Celestial En El Nombre De Jesús</h2>
+  </div>
+
+  <div class="horarios">
+    <div class="horario">
+      <span class="dia">Miércoles</span>
+      <div class="hora-circulo">
+        <strong>20:00</strong>
+        <small>HRS</small>
+      </div>
+    </div>
+
+    <div class="horario">
+      <span class="dia">Viernes</span>
+      <div class="hora-circulo">
+        <strong>20:00</strong>
+        <small>HRS</small>
+      </div>
+    </div>
+
+    <div class="horario">
+      <span class="dia">Sábado</span>
+      <div class="hora-circulo">
+        <strong>20:00</strong>
+        <small>HRS</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="uvicacion">
+    <p class="uvi-txt">
+      San Nicolas, sector Monteleon,
+      <br>Los Sauces, Pasaje San Jeronimo, Parcela #25
+    </p>
+  </div>
+</div>
+
+<div id="nosotros" class="contenido-2">
+  <h3 class="cont-1">Información acerca del ministerio</h3>
+  <img src="img/cita-3.png" alt="">
+</div>
+
+<div class="nada"><p>a</p></div>
+
+<div id="servicios" class="imagenes">
+  <h3>Citas Bíblicas</h3>
+  <div class="imagenes-row">
+    <img src="img/cita-1.png">
+    <img src="img/cita-2.png">
+    <img src="img/cita-4.png">
+  </div>
+</div>
+
+<div id="contacto" class="contenido-fin">
+  <div class="txt-fin">
+    Escogido por la mano de Dios a través de nuestro Señor Jesucristo
+    y la luz del Espíritu Santo - Obispo Alonso Molina
+  </div>
+
+  <div class="contacto">
+    <p class="contactanos">Contáctanos</p>
+    <div class="links">
+      <a href="https://wa.me/+56937227774">
+        <img src="img/whatsApp.png">WhatsApp
+      </a>
+      <a href="#">
+        <img src="img/Facebook-ft.png">Facebook
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

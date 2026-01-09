@@ -194,30 +194,44 @@ html {
   border-radius: 10px 0px 10px 10px;
 }
 
-/*------contenido 2-------*/
+
+
+/* ===== CONTENIDO 2 (RECUADRO PLOMO) ===== */
 .contenido-2 {
-  background: rgba(0,0,0,0.1);  /* opcional, para que se vea sobre el fondo */
-  padding: 50px 20px;
-  color: rgb(0, 0, 0);
+  background-color: #d6d6d6;   /* fondo plomo */
+  padding: 25px;               /* espacio alrededor */
+  border-radius: 14px;
+  max-width: 520px;
+  margin: 50px auto;
   text-align: center;
-  margin-top: 50px;
-  margin-left: 30%;
-  margin-right: 30%;
-  border-radius: 20px;
-  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.323);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
 
+/* TEXTO */
 .contenido-2 h3 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  margin-top: -20px;
+  margin: 0 0 20px;
+  font-size: 1.4rem;
+  color: #000;
 }
 
-.contenido-2 img{
-  width: 450px;
+/* IMAGEN */
+.contenido-2 img {
+  width: 100%;
+  max-width: 420px;               /* más chica que el fondo */
   height: auto;
+  display: block;
+  margin: 0 auto;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.295);
+
+  /* SOMBRA SUAVE */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.contenido-2 img,
+.imagenes-row img {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
 }
 
 
@@ -575,8 +589,6 @@ html {
 }
 
 .imagenes-row img {
-  width: 450px;
-  height: auto;
   border-radius: 10px;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.295);
 }
@@ -669,7 +681,6 @@ html {
   .menu-desktop { display: none; }
   .menu-btn { display: block; }
   .logo-box { position: absolute; left: 50%; transform: translateX(-50%); }
-  .todo { background-size: 180%; }
   .contenido-1{ margin-top: 20px; }
   .contenido-1 h2 { font-size: 130%; }
   .contenido-1 h3 { font-size: 120%; }
@@ -679,26 +690,26 @@ html {
   .uvicacion { margin-top: 20px; font-size: 1rem; }
 
   /*------contenido 2-------*/
+  @media (max-width: 768px) {
   .contenido-2 {
-    background: rgba(0,0,0,0.1);  /* opcional, para que se vea sobre el fondo */
-    padding: 100px;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    margin: 5%;
+    max-width: 92%;
+    padding: 20px;
+    margin: 25px auto;
   }
 
-  .contenido-2 h3 {
-    margin-top: -15%;
-    font-size: 1.5rem;
-  }
-
-  .contenido-2 img{
-    margin-left: -15%;
-    margin-bottom: -15%;
+  .contenido-2 img {
+    max-width: 100%;
   }
 }
 
+}
 
+@media (max-width: 768px) {
+  .todo {
+    background-size: cover;
+    background-position: center;
+  }
+}
 
 
 
@@ -1090,4 +1101,10 @@ html {
 .sidebar::-webkit-scrollbar,
 .pc-sidebar::-webkit-scrollbar {
   display: none;             /* Chrome, Edge, Safari */
+}
+
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
 }
